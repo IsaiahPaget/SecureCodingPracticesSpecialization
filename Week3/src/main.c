@@ -7,25 +7,30 @@ void print_queue(QUEUE *qptr) {
     for (i = 0; i < qptr->count; i++) {
         printf("%d ", qptr->que[(qptr->head + i) % qptr->size]);
     }
-    printf("\n");
+    printf("\n\n");
 }
 
 int main() {
     printf("hello, world\n");
 
-    int queue_size = 10;
+    int queue_size = 6;
     
     QUEUE *my_queue = NULL;
 
     qmanage(&my_queue, 1, queue_size);
 
-    int numberToPutOnQueue = 10;
+    int numberToPutOnQueue[] = {10, 20, 30, 40 ,50, 60};
 
-    put_on_queue(my_queue, numberToPutOnQueue);
+    for (int i = 0; i < sizeof(numberToPutOnQueue) / sizeof(int); i++) {
+        put_on_queue(my_queue, numberToPutOnQueue[i]);
+    }
 
     print_queue(my_queue);
 
-    take_off_queue(my_queue, &numberToPutOnQueue);
+    my_queue -> size = 3;
+
+    take_off_queue(my_queue, &numberToPutOnQueue[3]);
+    take_off_queue(my_queue, &numberToPutOnQueue[6]);
 
     print_queue(my_queue);
 
@@ -33,5 +38,3 @@ int main() {
 
     return 0;
 }
-
-/*  */
