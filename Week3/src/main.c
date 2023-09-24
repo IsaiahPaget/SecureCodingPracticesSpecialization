@@ -10,6 +10,17 @@ void print_queue(QUEUE *qptr) {
     printf("\n\n");
 }
 
+
+/*
+    Instructions:
+
+    Write a short program that uses the interface that the fragile implementation provides to write a program that creates queues, adds integers to those queues, and deletes numbers from those queues.
+
+    Then find a sequence of calls to put_on_queue and take_off_queue that demonstrate that decreasing the size field in the header structure of a queue can cause elements previously added to the queue to become invisible. What value of size did you begin with, what value did you change it to, and what was the sequence of function calls you came up with?
+
+    Next, write a second program to invoke the library functions to make one of the library functions crash. This can be due to an illegal memory reference or any other reason.
+*/
+
 int main() {
     printf("hello, world\n");
 
