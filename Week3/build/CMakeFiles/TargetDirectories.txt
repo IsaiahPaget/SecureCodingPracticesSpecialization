@@ -1,0 +1,3 @@
+/home/isaiahpaget/Documents/Programming/SecureCodingPracticesSpecialization/Week3/build/CMakeFiles/securequeses.dir
+/home/isaiahpaget/Documents/Programming/SecureCodingPracticesSpecialization/Week3/build/CMakeFiles/edit_cache.dir
+/home/isaiahpaget/Documents/Programming/SecureCodingPracticesSpecialization/Week3/build/CMakeFiles/rebuild_cache.dir
