@@ -1,1 +1,0 @@
-/usr/bin/cc CMakeFiles/securequeses.dir/main.c.o CMakeFiles/securequeses.dir/fqlib.c.o -o securequeses 
