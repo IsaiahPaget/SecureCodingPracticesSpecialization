@@ -28,15 +28,15 @@
  * perhaps ...)
  */
 #include <stdio.h>
-#include <strings.h>
+#include <string.h>
 #include <stdlib.h>
-#include "qlib.h"
+#include "saqlib.h"
 
 /*
  * various macros
  */
 #define DEBUG			/* includes a queue lister for debugging */
-#define MAXQ	1024		/* max number of queues */
+#define MAXQ	1		/* max number of queues */
 #define MAXELT	1024		/* max number of elements per queue */
 #define IOFFSET	0x1221		/* used to hide index number in ticket */
 #define NOFFSET	0x0502		/* used to hide nonce in ticket */
@@ -86,8 +86,7 @@ static unsigned int noncectr = 1;	/* non-zero always 		   */
  *				(qe_errbuf has disambiguating string)
  * EXCEPTIONS:	none
  */
-static QTICKET qtktref(unsigned int index)
-{
+static QTICKET qtktref(unsigned int index) {
 	unsigned int high;	/* high 16 bits of ticket (index) */
 	unsigned int low;	/* low 16 bits of ticket (nonce) */
 
@@ -204,17 +203,8 @@ QTICKET create_queue(void)
 	register int cur;	/* index of current queue */
 	register int tkt;	/* new ticket for current queue */
 
-	/* check for array full */
-	for(cur = 0; cur < MAXQ; cur++)
-		if (queues[cur] == NULL)
-			break;
-	if (cur == MAXQ){
-		ERRBUF2("create_queue: too many queues (max %d)", MAXQ);
-		return(QE_TOOMANYQS);
-	}
-
 	/* allocate a new queue */
-	if ((queues[cur] = malloc(sizeof(QUEUE))) == NULL){
+	if ((queues[cur] = realloc(*queues,(MAXQ + 1) * sizeof(QUEUE))) == NULL){
 		ERRBUF("create_queue: malloc: no more memory");
 		return(QE_NOROOM);
 	}
@@ -407,3 +397,4 @@ int list_queue(QTICKET qno)
 	return(QE_NONE);
 }
 #endif
+
