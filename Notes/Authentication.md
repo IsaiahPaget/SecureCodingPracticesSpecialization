@@ -26,7 +26,24 @@ Role based access control:
 - regular
 - guest
 
-Discretionary access contro:
+Discretionary access control:
 - owners of the resource grant access to others like sharing on google drive
 Identity based access control:
 - instagram account type stuff
+
+vertical privilege attack -> elevating privileges
+horizontal privilege attack -> moving to another user who has different privileges
+
+### How to mitigate brute force session id attacks
+
+a formula to decide how long it will take to brute force a session id goes as follows:
+(2<sup>B</sup> + 1 ) / 2 * A * S
+- B is the number of bits of entropy in the session id
+- A is the number of guesses an attacker can perform each second
+- S is the current number of valid session IDs at any given moment
+
+```python
+# example - 64 bit session ID:
+(2**32 + 1) / (2 * 1000 * 10000) = 429496
+```
+
